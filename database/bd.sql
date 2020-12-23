@@ -30,3 +30,5 @@ areaDestino varchar(20),
 estadoTramite int DEFAULT 2
 
 );
+
+insert into usuarios (nombreUsuario, apellidoUsuario, telefonoUsuario, areaUsuario, rolUsuario, nombre, email, password, img) values('daniel','perez','989777834','administracion','administracion','daniel','dasaba@gmail.com','123','');

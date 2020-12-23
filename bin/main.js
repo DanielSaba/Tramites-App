@@ -1473,7 +1473,7 @@ SidebarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "URL_SERVICIOS", function() { return URL_SERVICIOS; });
-const URL_SERVICIOS = 'http://localhost:3000';
+const URL_SERVICIOS = 'https://tramitesdoc2.herokuapp.com';
 
 
 /***/ }),
