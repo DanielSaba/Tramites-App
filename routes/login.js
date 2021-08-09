@@ -1,52 +1,58 @@
 var express = require('express');
 var app = express();
 
-const pool=require('../keys');
-const con=pool();
-var jwt = require('jsonwebtoken');
+// Usamos bcrypt para comprobar la contraseña
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
+const Usuario=require('../models/usuario');
 
 app.post('/', async (req, res, next) => {
 
-    var email = req.body.email;
-	var password = req.body.password;
-	var areaUsuario = req.body.areaUsuario;
-	
-	var tokenData = {
-		email: email
-		// ANY DATA
-	  }
+    const email=req.body.email;
+	const password = req.body.password
 
-	if (email && password) {
-		await con.query('SELECT * FROM usuarios WHERE email = ? AND password = ? AND areaUsuario = ?', [email, password, areaUsuario], function(error, results, fields) {
-			if (results.length > 0) {
-			 var token = jwt.sign(tokenData, 'privateKey', { expiresIn: 14400 }); // 4 horas 
-			res.json({
-				dato:'enviadoo',
-				email:email,
-				password:password,
-				areaUsuario:areaUsuario,
-				token:token
-				
-            })
-                
-			} 	
+	console.log(email);
+	try{
+
+		const user = await Usuario.findOne({where: {email: email}});	
+
+		if(!user){
+			return res.status(400).json({
+				ok:true,
+				msg:'Login Incorrecto',
+				email
+			})
+		}
+
+		if(user.password != password){
+			return res.status(400).json({
+				ok:false,
+				msg:'contraseña incorrecta'
+			})
+		}
+
+        let token = jwt.sign({
+            user
+        }, 'este-es-el-seed', {expiresIn: '48h'});
+
+        res.json({
+            ok: true,
+            user,
+            token
+        });
 			
-		});
-	} else {
 		
-		
-    } 
-
-
-
+	}catch(error){
+		res.status(400).json({
+            ok:false,
+            msg:'Hablar con el admin'
+        });
+	}
+     
 
 });
-	
- /*    */
-    
 
-        
 
 
 

@@ -1,27 +1,27 @@
 const express=require('express');
-
 const fileupload=require('express-fileupload');
-
 const app=express();
-
-
-const pool=require('../keys');
-const con=pool();
-
-
+const Tramite=require('../models/tramite');
 
 //-----------------------------------------------//
 
 app.use(fileupload());
 
 //Pedido de datos//
-
 app.get('/',async (req, res)=>{
-
-    con.query('select * from tramites',(err,rows)=>{
-        console.log('data received');
-        res.json(rows);
-    });
+    const tramite=await Tramite.findAll();
+        try{
+            res.status(200).json({
+                ok:true,
+                msg:'Listado Satisfactoriamente',
+                usuario
+            })
+        }catch(error){
+            res.status(400).json({
+                ok:false,
+                msg:'Error en el Listado'
+            })
+        }
  
 });
 //------------------------------------------------//
@@ -31,16 +31,13 @@ app.get('/',async (req, res)=>{
 app.post('/', async (req, res) => {
     
     
-    var archivo=req.files.archivo2;
+    var archivo=await req.files.archivo2;
     const nombreCortado=archivo.name.split('.');
     const extensionArchivo=nombreCortado[nombreCortado.length-1];
     const extensionArchivo2=nombreCortado[0];
 
-    
     //extensiones permitidas
-
-    const extensionesValidas=['jpeg','jpg','png','pdf'];
-
+    const extensionesValidas=['jpeg','jpg','png','pdf','docx'];
     if(extensionesValidas.indexOf(extensionArchivo)<0){
         return res.status(200).json({
             ok:false,
@@ -50,11 +47,9 @@ app.post('/', async (req, res) => {
     }
 
     //nombre de archivo personalizado
-
     const nombreArchivo=`${extensionArchivo2}${new Date().getMilliseconds()}.${extensionArchivo}`;
 
     //mov temporal al path
-
     const path= `./uploads/${nombreArchivo}`;
 
     archivo.mv(path,err=>{
@@ -88,12 +83,10 @@ const {nombreTramite,
         archivoTramite,
         areaDestino
     }
-
     
-    
-    await con.query( 'insert into tramites set ?', [newTramite]);
+    //await con.query( 'insert into tramites set ?', [newTramite]);
            
-
+    const saveUser = await Tramite.create(newTramite);
 });
 
 //------------------------------------------------//

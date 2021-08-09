@@ -1,12 +1,7 @@
 const express=require('express');
-
-
 const app=express();
-
 const usuarioModel=require('../models/usuario');
-const pool=require('../keys');
-const con=pool();
-
+const Usuario=require('../models/usuario');
 var jwt = require('jsonwebtoken');
 //-----------------------------------------------//
 
@@ -26,42 +21,64 @@ var jwt = require('jsonwebtoken');
     });
 }); */
 
-//Pedido de datos//
-
+//Get Users//
 app.get('/',async (req, res)=>{
-
-    con.query( 'select * from usuarios', (err,rows) => {
-        if(err) throw err;
-      
-        console.log('Data received from Db:');
-        console.log(rows);
-        res.json(rows);
-    });
-
+   // Usuario.query( 'select * from usuarios')
+    const usuario=await Usuario.findAll();
+        try{
+            res.status(200).json({
+                ok:true,
+                msg:'Listado Satisfactoriamente',
+                usuario
+            })
+        }catch(error){
+            res.status(400).json({
+                ok:false,
+                msg:'Error en el Listado'
+            })
+        }
+    
 });
 //------------------------------------------------//
 
 
-
-
-//almacenamiento dee datos
-
+//Save new User
 app.post('/', async (req, res) => {
+   // await con.query( 'insert into usuarios set ?', [req.body]);
 
-    await con.query( 'insert into usuarios set ?', [req.body]);
-    res.json({text:'Producto Guardado'});    
+    const saveUser = await Usuario.create(req.body);
+
+    try{
+        res.status(200).json({
+                ok:true,
+                msg:'Usuario Guardado Satisfactoriamente'
+            })
+    }catch(error){
+        res.status(400).json({
+            ok:false,
+            mdg:'Usuario no Registrado'
+        })
+    }
 });
-
 //------------------------------------------------//
+
 
 //eliminacion de datos
-
 app.delete('/:id', async(req, res) => {
 
-    var id=req.params.id;
-    await con.query('',[],()=>{
-        
-    });
+    var idUsuario=req.params.id;
+    const userId = await Usuario.findOne({where: {idUsuario: idUsuario}});
+    try{
+		if(userId){
+            await userId.destroy();
+			return res.status(400).json({
+				ok:true,
+				msg:'Eliminado con exito'
+			})
+		}
+    }catch(error){
+        console.log(error);
+    }
 
     
 });

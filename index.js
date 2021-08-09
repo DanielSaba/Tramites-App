@@ -32,7 +32,7 @@ const images=require('./routes/image');
 const observados=require('./routes/observados');
 
 //definicion de puerto
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 4000);
 
 
 

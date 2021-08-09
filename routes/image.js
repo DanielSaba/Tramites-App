@@ -4,8 +4,6 @@ const express=require('express');
 const app=express();
 
 
-const pool=require('../keys');
-const con=pool();
 
 const path=require('path');
 const fs=require('fs');

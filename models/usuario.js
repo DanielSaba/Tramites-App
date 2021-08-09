@@ -1,43 +1,20 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-    const Usuarios = sequelize.define('usuarios', {
-       
-        nombreUsuario: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
-        apellidoUsuario: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        telefonoUsuario: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        areaUsuario: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        rolUsuario: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        nombre: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        email: {
-            allowNull: true,
-            type: DataTypes.STRING
-        },
-        password: {
-            allowNull: true,
-            type: DataTypes.STRING
-        }
-    });
+const  Sequelize  = require('sequelize');
+const  Tramites  = require('../keys')
 
-    Usuarios.associate = function(models) {
-    // associations can be defined here
-    };
-    return Usuarios;
-};
+const Usuario = Tramites.define('usuarios', {
+    idUsuario: {type: Sequelize.INTEGER, primaryKey: true},
+    nombreUsuario: Sequelize.STRING,
+    apellidoUsuario: Sequelize.STRING,
+    telefonoUsuario:Sequelize.STRING,
+    areaUsuario:Sequelize.STRING,
+    rolUsuario:Sequelize.STRING,
+    nombre:Sequelize.STRING,
+    email:Sequelize.STRING,
+    password:Sequelize.STRING,
+    img:Sequelize.STRING
+   
+  },{
+    timestamps: false
+  });
+
+module.exports=Usuario;

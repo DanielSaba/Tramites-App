@@ -22,13 +22,13 @@ create table tramites(
 
 idTramite integer primary key auto_increment,
 nombreTramite varchar(40),
-nombreUsuario varchar(20),
-apellidoUsuario varchar(20),
+nombreUsuario varchar(50),
+apellidoUsuario varchar(50),
 fechaTramite date,
-archivoTramite varchar(20),
+archivoTramite varchar(100),
 areaDestino varchar(20),
 estadoTramite int DEFAULT 2
 
 );
 
-insert into usuarios (nombreUsuario, apellidoUsuario, telefonoUsuario, areaUsuario, rolUsuario, nombre, email, password, img) values('daniel','perez','989777834','administracion','administracion','daniel','dasaba@gmail.com','123','');
+insert into usuarios (nombreUsuario, apellidoUsuario, telefonoUsuario, areaUsuario, rolUsuario, nombre, email, password, img) values('daniel','perez','989777834','area1','Trabajador','daniel','dasaba@gmail.com','123','');
