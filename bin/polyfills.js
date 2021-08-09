@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\danie\Desktop\ProyectoTramites2\tramitesServer\tramitesdoc\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\DANIEL\Documents\Archivos\ProyectoTramites2\tramitesServer\tramitesdoc\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

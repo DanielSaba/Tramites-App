@@ -12,7 +12,7 @@ Main sidebar
 
 .left-sidebar {
     position: absolute;
-    width: 240px;
+    width: 200px;
     height: 100%;
     top: 0px;
     z-index: 20;
@@ -266,20 +266,4 @@ When click on sidebar toggler and also for tablet
     }
 }
 
-@media(max-width:767px) {
-    .mini-sidebar {
-        .left-sidebar {
-            position: fixed;
-        }
-        .left-sidebar,
-        .sidebar-footer {
-            left: -240px;
-        }
-        &.show-sidebar {
-            .left-sidebar,
-            .sidebar-footer {
-                left: 0px;
-            }
-        }
-    }
-}
+
