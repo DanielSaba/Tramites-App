@@ -1,0 +1,48 @@
+[33mcommit abd91ed03b40a7a72c4f9e09f6456203c3242c47[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31mheroku/main[m[33m)[m
+Merge: f7ee113 80066fd
+Author: Daniel <danielantoniowww@gmail.com>
+Date:   Mon Aug 9 20:06:34 2021 -0500
+
+    Merge branch 'main' of https://github.com/DanielSaba/Tramites-App
+
+[33mcommit f7ee11304a5fca426ea06920ff3e01f58239d42e[m
+Author: Daniel <danielantoniowww@gmail.com>
+Date:   Mon Aug 9 19:38:16 2021 -0500
+
+    commit prueba 2
+
+[33mcommit 11706ffd1a917bafdffa82c0841c68ddadc32c7f[m
+Author: Daniel <danielantoniowww@gmail.com>
+Date:   Mon Aug 9 19:35:27 2021 -0500
+
+    commit de prueba
+
+[33mcommit 80066fd9bd8f77bf4f582b369946ae8549d2696e[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Daniel Antonio Sauñi Barrionuevo <72640352+DanielSaba@users.noreply.github.com>
+Date:   Mon Aug 9 19:27:38 2021 -0500
+
+    Create README.md
+
+[33mcommit a65de90ca7066d4881ec5b6b5dd52c97441054dd[m
+Author: Daniel <danielantoniowww@gmail.com>
+Date:   Mon Aug 9 17:17:22 2021 -0500
+
+    git deploy
+
+[33mcommit a56b254c412dc46856d4f7d19bdd339ecf8bf14d[m
+Author: Daniel <danielantoniowww@gmail.com>
+Date:   Mon Aug 9 16:59:03 2021 -0500
+
+    commit first deploy
+
+[33mcommit 820c0b4eb44d43f1a6f8ff9ce7870a1828a14756[m[33m ([m[1;31mheroku/master[m[33m)[m
+Author: DanielSaba <danielantoniowww@gmail.com>
+Date:   Tue Dec 22 22:14:20 2020 -0500
+
+    make it better
+
+[33mcommit 3f508af60cb06acdc90c963efb436a0080393698[m
+Author: DanielSaba <danielantoniowww@gmail.com>
+Date:   Mon Dec 21 21:30:13 2020 -0500
+
+    make it better
